@@ -3,6 +3,7 @@ import React from "react";
 import Header from "components/Appointment/Header";
 import Empty from "components/Appointment/Empty";
 import Show from "components/Appointment/Show";
+import useVisualMode from "../helpers/hooks/useVisualMode";
 
 import "components/Appointment/styles.scss";
 
