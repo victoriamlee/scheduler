@@ -31,6 +31,48 @@ export default function Application(props) {
   const appointments = getAppointmentsForDay(state, state.day)
   const interviewers = getInterviewersForDay(state, state.day)
 
+  function bookInterview(id, interview, transition, mode) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: {...interview}
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    
+    axios.put(`/api/appointments/${id}`, { interview })
+      .then(() => {
+        setState({
+          ...state,
+          appointments
+        });
+        transition(mode);
+      });
+  };
+ 
+
+  function cancelInterview(id, transition, mode){
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    axios.delete(`/api/appointments/${id}`)
+      .then(() => {
+        setState({
+          ...state,
+          appointments
+        });
+        transition(mode);
+      })
+  };
+
+
   return (
     <main className="layout">
       <section className="sidebar">
@@ -51,14 +93,16 @@ export default function Application(props) {
       </section>
       <section className="schedule">
         {appointments.map(appointment => {
-          const interview = getInterview(state, appointment.interview);
+
         return (
           <Appointment 
           key={appointment.id}
           id={appointment.id}
           time={appointment.time}
-          interview={interview} 
+          interview={getInterview(state, appointment.interview)} 
           interviewers={interviewers}
+          bookInterview={bookInterview}
+          cancelInterview={cancelInterview}
           />
         );
       })
