@@ -10,8 +10,27 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
+  useEffect(() => {
+    setState(prev => ({...prev, days: prev.days.map(day => ({ ...day, spots: calculateSpots(prev, day.name)}))}));
+  },[state.appointments])
   const setDay = day => setState({...state, day });
 
+   //calculates the number of spots left for a given day
+   const calculateSpots = function (state, dayName) {
+    const day = state.days.find(day => (day.name === dayName))
+
+    const appObj = day.appointments.map(app =>(state.appointments[app]))
+    
+    let counter = 0
+      for (let app of appObj){
+       if (!app.interview){
+          counter++
+        }
+     }
+    return counter
+  };
+
+  // renders the data for days, appointments, and interviewers
   useEffect(() => {
     Promise.all([
       Promise.resolve(axios.get("/api/days")),
@@ -22,6 +41,7 @@ export default function useApplicationData() {
     });
   }, []);
 
+  // makes an HTTP request and updates the state to show a new booked appointment
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -41,6 +61,7 @@ export default function useApplicationData() {
       })
     }
 
+    // makes an HTTP request and updates the state to show the cancelled appointment
     function cancelInterview(id){
       const appointment = {
         ...state.appointments[id],
