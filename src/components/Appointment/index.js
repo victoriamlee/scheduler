@@ -65,7 +65,7 @@ function confirm() {
       <Header time={props.time} />
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
       {mode === SAVING && <Status message={"Saving"} />}
-      {mode === CONFIRM && <Confirm message={"Are you sure you would like to delete?"} onConfirm={confirm} />}
+      {mode === CONFIRM && <Confirm message={"Are you sure you would like to delete?"} onCancel={back} onConfirm={confirm} />}
       {mode === DELETING && <Status message={"Deleting"} />}
       {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={back} />}
       {mode === ERROR_DELETE && <Error message={"Could not cancel appointment"} onClose={back} />}
