@@ -28,10 +28,10 @@ export default function Form(props) {
       return;
     }
 
-    if (!interviewer) {
-      setError("Interviewer cannot be blank");
-      return;
-    }
+    // if (!interviewer) {
+    //   setError("Interviewer cannot be blank");
+    //   return;
+    // }
   
     setError(false)
     props.onSave(name, interviewer);
