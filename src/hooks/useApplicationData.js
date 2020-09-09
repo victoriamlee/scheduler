@@ -24,8 +24,8 @@ export default function useApplicationData() {
     const appObj = day.appointments.map(app =>(state.appointments[app]));
     
     let counter = 0
-      for (let app of appObj){
-       if (!app.interview){
+      for (let app of appObj) {
+       if (!app.interview) {
           counter++
         }
      }
