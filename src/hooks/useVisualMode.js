@@ -4,6 +4,7 @@ export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
+  // changes the mode and renders the component
   function transition(mode, replace = false) {
     setHistory(history => {
     if (replace) {
@@ -17,7 +18,7 @@ export default function useVisualMode(initial) {
     setMode(mode);
   };
 
-
+  // goes back to the previous view 
   function back() {
     setHistory(history => {
       if (mode === initial) {
@@ -28,7 +29,6 @@ export default function useVisualMode(initial) {
       return newHist;
     })
   };
-
 
   return { 
     mode,

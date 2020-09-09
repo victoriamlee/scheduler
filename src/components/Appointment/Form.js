@@ -7,6 +7,7 @@ export default function Form(props) {
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
   const [error, setError] = useState("");
 
+  // resets name and interview field
   const reset = () => {
     setName("");
     setInterviewer(null);
@@ -17,6 +18,7 @@ export default function Form(props) {
     reset();
   };
 
+  // prevents user from saving an interview spot without name or interviewer
   function validate() {
     if (name === "") {
       setError("Student name cannot be blank");

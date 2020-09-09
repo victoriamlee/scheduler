@@ -26,6 +26,7 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
+  // saves an appointment
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -40,14 +41,17 @@ export default function Appointment(props) {
     .catch(error => transition(ERROR_SAVE, true));
   };
 
+  // transitions to the edit appointment view
   function edit() {
     transition(EDIT)
   };
 
+  // transitions to confirmation of cancelling appointment view
   function deleting() {
     transition(CONFIRM)
   };
 
+  // confirms the cancellation of appointment
   function confirm() {
     transition(DELETING, true);
 
