@@ -1,8 +1,14 @@
 # Interview Scheduler
 
+Interview Scheduler is an app that allows you to schedule interviews!
+
 ## Setup
 
 Install dependencies with `npm install`.
+
+## Testing
+
+Interviewer Scheduler uses two different testing libraries. Jest was used to perform integration testing while Cypress was used for end-to-end testing.
 
 ## Running Webpack Development Server
 
