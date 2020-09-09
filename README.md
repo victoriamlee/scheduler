@@ -7,16 +7,16 @@ Interview Scheduler is an app that allows you to schedule interviews!
 ### Homepage
 !["Screenshot of homepage"](https://github.com/victoriamlee/scheduler/blob/master/docs/home-page.png)
 
-Selecting an interview
+### Selecting an interview
 !["Screenshot of selecting an interview"](https://github.com/victoriamlee/scheduler/blob/master/docs/interview-selected.png)
 
-Editing an appointment
+### Editing an appointment
 !["Screenshot of editing an appointment"](https://github.com/victoriamlee/scheduler/blob/master/docs/edit-appointment.png)
 
-Deleting an appointment
+### Deleting an appointment
 !["Screenshot of deleting an appointment"](https://github.com/victoriamlee/scheduler/blob/master/docs/delete-confirmation.png)
 
-Input can't be blank
+### Input can't be blank
 !["Screenshot of blank student name"](https://github.com/victoriamlee/scheduler/blob/master/docs/student-name-blank.png)
 
 ## Dependencies
