@@ -81,12 +81,10 @@ export default {
   }),
   
   put: jest.fn(url => {
-    
-      return Promise.resolve({ 
-        status: 204, 
-        statusText: "No Content",
-      });
-    
+    return Promise.resolve({ 
+      status: 204, 
+      statusText: "No Content",
+    });
   }),
 
   delete: jest.fn(url => {
@@ -95,4 +93,4 @@ export default {
       statusText: 'No Content'
     });
   })
-}
+};

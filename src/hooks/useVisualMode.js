@@ -9,13 +9,13 @@ export default function useVisualMode(initial) {
     if (replace) {
       const newHist = [...history];
       newHist.splice(-1, 1, mode);
-      return newHist
+      return newHist;
     } else {
-      return [...history, mode]
-    }
-  })
+      return [...history, mode];
+      }
+    })
     setMode(mode);
-  }
+  };
 
 
   function back() {
@@ -24,10 +24,10 @@ export default function useVisualMode(initial) {
         return;
       }
       const newHist = [...history].slice(0, -1);
-      setMode(newHist[newHist.length - 1])
-      return newHist
+      setMode(newHist[newHist.length - 1]);
+      return newHist;
     })
-  }
+  };
 
 
   return { 

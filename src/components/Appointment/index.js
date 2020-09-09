@@ -12,7 +12,6 @@ import useVisualMode from "../../hooks/useVisualMode";
 import "components/Appointment/styles.scss";
 
 export default function Appointment(props) {
-
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -27,12 +26,10 @@ export default function Appointment(props) {
     props.interview ? SHOW : EMPTY
   );
 
-console.log("PROPS", props.interview)
-
-function save(name, interviewer) {
-  const interview = {
-    student: name,
-    interviewer
+  function save(name, interviewer) {
+    const interview = {
+      student: name,
+      interviewer
   };
 
   transition(SAVING);
@@ -41,24 +38,24 @@ function save(name, interviewer) {
     .bookInterview(props.id, interview)
     .then(() => transition(SHOW))
     .catch(error => transition(ERROR_SAVE, true));
-};
+  };
 
-function edit() {
-  transition(EDIT)
-}
+  function edit() {
+    transition(EDIT)
+  };
 
-function deleting() {
-  transition(CONFIRM)
-}
+  function deleting() {
+    transition(CONFIRM)
+  };
 
-function confirm() {
-  transition(DELETING, true);
+  function confirm() {
+    transition(DELETING, true);
 
-  props
-    .cancelInterview(props.id)
-    .then(() => transition(EMPTY))
-    .catch(error => transition(ERROR_DELETE, true));
-}
+    props
+      .cancelInterview(props.id)
+      .then(() => transition(EMPTY))
+      .catch(error => transition(ERROR_DELETE, true));
+  };
 
   return (
     <article className="appointment" data-testid="appointment">
@@ -70,12 +67,12 @@ function confirm() {
       {mode === ERROR_SAVE && <Error message={"Could not save appointment"} onClose={back} />}
       {mode === ERROR_DELETE && <Error message={"Could not cancel appointment"} onClose={back} />}
       {mode === CREATE && (
-          <Form
-          interviewers={props.interviewers}
-          onSave={save}
-          onCancel={back}
-          />
-        )}
+        <Form
+        interviewers={props.interviewers}
+        onSave={save}
+        onCancel={back}
+        />
+      )}
       {mode === EDIT && (
         <Form
         name={props.interview.student}
@@ -92,8 +89,7 @@ function confirm() {
         onEdit={edit}
         onDelete={deleting}
         />
-        )}
-        
+      )}    
     </article>
   );
-}
+};

@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function useApplicationData() {
-
   const [state, setState] = useState({
     day: "Monday",
     days: [],
@@ -12,14 +11,15 @@ export default function useApplicationData() {
 
   useEffect(() => {
     setState(prev => ({...prev, days: prev.days.map(day => ({ ...day, spots: calculateSpots(prev, day.name)}))}));
-  },[state.appointments])
+  },[state.appointments]);
+
   const setDay = day => setState({...state, day });
 
    //calculates the number of spots left for a given day
    const calculateSpots = function (state, dayName) {
-    const day = state.days.find(day => (day.name === dayName))
+    const day = state.days.find(day => (day.name === dayName));
 
-    const appObj = day.appointments.map(app =>(state.appointments[app]))
+    const appObj = day.appointments.map(app =>(state.appointments[app]));
     
     let counter = 0
       for (let app of appObj){
@@ -27,7 +27,8 @@ export default function useApplicationData() {
           counter++
         }
      }
-    return counter
+
+    return counter;
   };
 
   // renders the data for days, appointments, and interviewers
@@ -52,34 +53,34 @@ export default function useApplicationData() {
       [id]: appointment
     };
     
-    return axios.put(`/api/appointments/${id}`, { interview })
+  return axios.put(`/api/appointments/${id}`, { interview })
+    .then(() => {
+      setState({
+        ...state,
+        appointments
+      });
+    })
+  };
+
+  // makes an HTTP request and updates the state to show the cancelled appointment
+  function cancelInterview(id){
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+
+    return axios.delete(`/api/appointments/${id}`)
       .then(() => {
         setState({
           ...state,
           appointments
         });
       })
-    }
-
-    // makes an HTTP request and updates the state to show the cancelled appointment
-    function cancelInterview(id){
-      const appointment = {
-        ...state.appointments[id],
-        interview: null
-      };
-      const appointments = {
-        ...state.appointments,
-        [id]: appointment
-      };
-  
-      return axios.delete(`/api/appointments/${id}`)
-        .then(() => {
-          setState({
-            ...state,
-            appointments
-          });
-        })
-    };
+  };
 
 
   return {
@@ -88,4 +89,4 @@ export default function useApplicationData() {
     bookInterview,
     cancelInterview
   };
-}
+};
