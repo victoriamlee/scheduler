@@ -7,6 +7,7 @@ import useApplicationData from "../hooks/useApplicationData";
 
 import "components/Application.scss";
 
+// application component that displays sidebar and schedule together
 export default function Application(props) {
   const {
     state,

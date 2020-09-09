@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
+// custom hook that returns functions: returns functions: state, setDay, bookInterview, and cancelInterview
 export default function useApplicationData() {
   const [state, setState] = useState({
     day: "Monday",
@@ -13,6 +14,7 @@ export default function useApplicationData() {
     setState(prev => ({...prev, days: prev.days.map(day => ({ ...day, spots: calculateSpots(prev, day.name)}))}));
   },[state.appointments]);
 
+  // sets the current day
   const setDay = day => setState({...state, day });
 
    //calculates the number of spots left for a given day
@@ -81,7 +83,6 @@ export default function useApplicationData() {
         });
       })
   };
-
 
   return {
     state,

@@ -5,7 +5,7 @@ import InterviewerListItem from "components/InterviewerListItem";
 
 import "components/InterviewerList.scss";
 
-
+// returns an array of interviewers with styling (intial state and preselected)
 export default function InterviewerList(props) {
   return (
     <section className="interviewers">

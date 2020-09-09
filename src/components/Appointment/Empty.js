@@ -1,5 +1,6 @@
 import React from "react";
 
+// empty component which shows an empty appointment time slot
 export default function Empty(props) {
   return (
   <main className="appointment__add">

@@ -11,7 +11,9 @@ import useVisualMode from "../../hooks/useVisualMode";
 
 import "components/Appointment/styles.scss";
 
+// appointment component used to display the different views
 export default function Appointment(props) {
+  // transition views
   const EMPTY = "EMPTY";
   const SHOW = "SHOW";
   const CREATE = "CREATE";
@@ -61,6 +63,7 @@ export default function Appointment(props) {
       .catch(error => transition(ERROR_DELETE, true));
   };
 
+  // returns appointment component with the proper view
   return (
     <article className="appointment" data-testid="appointment">
       <Header time={props.time} />

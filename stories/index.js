@@ -19,6 +19,7 @@ import Status from "components/Appointment/Status";
 import Error from "components/Appointment/Error";
 import Form from "components/Appointment/Form";
 
+// stories for Button
 storiesOf("Button", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -35,6 +36,7 @@ storiesOf("Button", module)
     </Button>
   ));
 
+// stories for DayListItem
 storiesOf("DayListItem", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -64,6 +66,7 @@ const days = [
   },
 ];
 
+// stories for DayList
 storiesOf("DayList", module)
 .addParameters({
   backgrounds: [{ name: "dark", value: "#222f3e", default: true }],
@@ -116,7 +119,8 @@ const interviewers = [
   { id: 4, name: "Cohana Roy", avatar: "https://i.imgur.com/FK8V841.jpg" },
   { id: 5, name: "Sven Jones", avatar: "https://i.imgur.com/twYrpay.jpg" }
 ];
-  
+
+// stories for InteriewerList
 storiesOf("InterviewerList", module)
   .addParameters({
     backgrounds: [{ name: "dark", value: "#222f3e", default: true }]
@@ -135,6 +139,7 @@ storiesOf("InterviewerList", module)
     />
   ));
 
+// stories for Appointment
 storiesOf("Appointment", module)
   .addParameters({
   backgrounds: [{name: "white", value: "#fff", default: true }]

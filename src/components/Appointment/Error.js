@@ -1,5 +1,6 @@
 import React from "react";
 
+// error component used to display an error message if a user can't delete or save an appointment
 export default function Error(props) {
   return (
     <main className="appointment__card appointment__card--error">

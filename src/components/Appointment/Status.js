@@ -1,5 +1,6 @@
 import React from "react";
 
+// status component used to display the loading screen (saving or deleting)
 export default function Status(props) {
   return (
     <main className="appointment__card appointment__card--status">

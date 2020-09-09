@@ -1,10 +1,11 @@
 import { useState } from "react";
 
+// custom hook that returns functions: mode, transition, and back
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
 
-  // changes the mode and renders the component
+  // transitions to a new mode and updates history
   function transition(mode, replace = false) {
     setHistory(history => {
     if (replace) {
