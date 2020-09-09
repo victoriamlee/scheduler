@@ -2,6 +2,19 @@
 
 Interview Scheduler is an app that allows you to schedule interviews!
 
+## Screenshots
+
+Homepage
+!["Screenshot of homepage"](https://github.com/victoriamlee/tweeter/blob/master/docs/homepage.png)
+
+## Dependencies
+- Node
+- Axios
+- React
+- Storybook
+- Cypress
+- Jest
+
 ## Setup
 
 Install dependencies with `npm install`.
